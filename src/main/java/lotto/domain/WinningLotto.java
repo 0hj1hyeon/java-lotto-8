@@ -14,4 +14,10 @@ public class WinningLotto {
         validateBonusDuplication(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
+
+    private void validateBonusDuplication(int bonusNumber) {
+        if (winningNumbers.getNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_BONUS_DUPLICATION);
+        }
+    }
 }
