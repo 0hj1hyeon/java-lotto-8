@@ -20,4 +20,12 @@ public class WinningLotto {
             throw new IllegalArgumentException(ERROR_BONUS_DUPLICATION);
         }
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers.getNumbers();
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
