@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -30,5 +31,16 @@ public class LottoStatistic {
         }
     }
 
+    public double calculateProfitRate() {
+        long totalPrize = statistics.entrySet().stream()
+                .mapToLong(entry -> entry.getKey().getPrizeMoney() * entry.getValue())
+                .sum();
 
+        double rate = (double) totalPrize / purchaseAmount * 100;
+        return Math.round(rate * 10.0) / 10.0;
+    }
+
+    public Map<LottoRank, Integer> getStatistics() {
+        return Collections.unmodifiableMap(statistics);
+    }
 }
