@@ -74,5 +74,11 @@ public class InputView {
         }
     }
 
-
+    private int parseBonus(String input) {
+        int number = Integer.parseInt(input.trim());
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이여야 합니다.");
+        }
+        return number;
+    }
 }
