@@ -18,7 +18,6 @@ public class LottoGenerator {
                 LOTTO_MAX_NUMBER,
                 LOTTO_NUMBER_COUNT
         );
-        Collections.sort(numbers);
         return numbers;
     }
 
