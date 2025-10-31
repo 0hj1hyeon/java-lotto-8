@@ -60,4 +60,19 @@ public class InputView {
                 .collect(java.util.stream.Collectors.toList());
     }
 
+    public int readBonusNumber() {
+        while (true) {
+            try {
+                System.out.println("보너스 번호를 입력해 주세요.");
+                String input = Console.readLine();
+                return parseBonus(input);
+            } catch (NumberFormatException e) {
+                System.out.println("[ERROR] 보너스 번호는 숫자 형식이어야 합니다.");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
 }
