@@ -20,4 +20,28 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public LottoMatchResult match(WinningLotto winningLotto) {
+        int matchCount = calculateMatchCount(winningLotto.getWinningNumbers());
+        boolean matchBonus = calculateBonusMatch(winningLotto.getBonusNumber(), matchCount);
+
+        return new LottoMatchResult(matchCount, matchBonus);
+    }
+
+    private int calculateMatchCount(List<Integer> winningNumbers) {
+        int count = 0;
+        for (int number : this.numbers) {
+            if (winningNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private boolean calculateBonusMatch(int bonusNumber, int matchCount) {
+        if (matchCount == 5 && this.numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
 }
