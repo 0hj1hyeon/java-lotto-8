@@ -38,5 +38,26 @@ public class InputView {
         }
     }
 
+    private List<Integer> parseNumbers(String input) {
+        String[] parts = input.split(",");
+        if (parts.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+        }
+
+        return java.util.stream.Stream.of(parts)
+                .map(String::trim)
+                .map(s -> {
+                    try {
+                        int number = Integer.parseInt(s);
+                        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+                            throw new IllegalArgumentException("[ERROR] 로또 번호는 " + MIN_NUMBER + "부터 " + MAX_NUMBER + " 사이여야 합니다.");
+                        }
+                        return number;
+                    } catch (NumberFormatException e) {
+                        throw new NumberFormatException();
+                    }
+                })
+                .collect(java.util.stream.Collectors.toList());
+    }
 
 }
