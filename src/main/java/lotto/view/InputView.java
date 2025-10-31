@@ -3,7 +3,13 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.PurchaseAmount;
 
+import java.util.List;
+
 public class InputView {
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 45;
+
     public PurchaseAmount readPurchaseAmount(){
         while (true) {
             try {
@@ -19,4 +25,18 @@ public class InputView {
             }
         }
     }
+
+    public List<Integer> readWinningNumbers() {
+        while (true) {
+            try {
+                System.out.println("\n당첨 번호를 입력해 주세요.");
+                String input = Console.readLine();
+                return parseNumbers(input);
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+
 }
