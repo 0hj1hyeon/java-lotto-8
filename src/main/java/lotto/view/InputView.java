@@ -9,7 +9,7 @@ import java.util.List;
 public class InputView {
 
 
-    public PurchaseAmount readPurchaseAmount(){
+    public PurchaseAmount readPurchaseAmount() {
         while (true) {
             try {
                 System.out.println("구입 금액을 입력해 주세요.");
